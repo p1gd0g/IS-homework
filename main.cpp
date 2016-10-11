@@ -1,6 +1,6 @@
-//test data are taken from http://page.math.tu-berlin.de/~kant/teaching/hess/krypto-ws2006/des.htm
-//uploaded to
-//2016Äê10ÔÂ11ÈÕ17:31:39
+//test data is taken from http://page.math.tu-berlin.de/~kant/teaching/hess/krypto-ws2006/des.htm
+//uploaded to https://github.com/p1gd0g/IS-homework
+//2016å¹´10æœˆ11æ—¥17:31:39
 
 #include <iostream>
 #include <cmath>
@@ -21,12 +21,12 @@ int IP[]={
 
 int PC_1[]={
 
-                // Ç°°ë²¿·Ö
+                // å‰åŠéƒ¨åˆ†
 	            57, 49, 41, 33, 25, 17, 9,
                 1,  58, 50, 42, 34, 26, 18,
                 10, 2,  59, 51, 43, 35, 27,
                 19, 11, 3,  60, 52, 44, 36,
-                // ºó°ë²¿·Ö
+                // ååŠéƒ¨åˆ†
                 63, 55, 47, 39, 31, 23, 15,
                 7,  62, 54, 46, 38, 30, 22,
                 14, 6,  61, 53, 45, 37, 29,
@@ -187,7 +187,7 @@ void shift(int C[],int D[],int n)
     {
         int temp;
 
-        temp=C[0];                          //CµÄÒÆÎ»
+        temp=C[0];                          //Cçš„ç§»ä½
         for(i=0;i<27;i++)
         {
             C[i]=C[i+1];
@@ -195,7 +195,7 @@ void shift(int C[],int D[],int n)
         }
         C[i]=temp;
 
-        temp=D[0];                          //DµÄÒÆÎ»
+        temp=D[0];                          //Dçš„ç§»ä½
         for(i=0;i<27;i++)
         {
             D[i]=D[i+1];
@@ -207,7 +207,7 @@ void shift(int C[],int D[],int n)
     {
         int temp1,temp2;
 
-        temp1=C[0];                         //CµÄÒÆÎ»
+        temp1=C[0];                         //Cçš„ç§»ä½
         temp2=C[1];
         for(i=0;i<26;i++)
         {
@@ -216,7 +216,7 @@ void shift(int C[],int D[],int n)
         C[i++]=temp1;
         C[i]=temp2;
 
-        temp1=D[0];                         //DµÄÒÆÎ»
+        temp1=D[0];                         //Dçš„ç§»ä½
         temp2=D[1];
         for(i=0;i<26;i++)
         {
@@ -235,7 +235,7 @@ void shift_1(int C[],int D[],int n)
     {
         int temp;
 
-        temp=C[27];                          //CµÄÒÆÎ»
+        temp=C[27];                          //Cçš„ç§»ä½
         for(i=27;i>0;i--)
         {
             C[i]=C[i-1];
@@ -243,7 +243,7 @@ void shift_1(int C[],int D[],int n)
         }
         C[i]=temp;
 
-        temp=D[27];                          //DµÄÒÆÎ»
+        temp=D[27];                          //Dçš„ç§»ä½
         for(i=27;i>0;i--)
         {
             D[i]=D[i-1];
@@ -255,7 +255,7 @@ void shift_1(int C[],int D[],int n)
     {
         int temp1,temp2;
 
-        temp1=C[27];                         //CµÄÒÆÎ»
+        temp1=C[27];                         //Cçš„ç§»ä½
         temp2=C[26];
         for(i=27;i>1;i--)
         {
@@ -264,7 +264,7 @@ void shift_1(int C[],int D[],int n)
         C[i--]=temp1;
         C[i]=temp2;
 
-        temp1=D[27];                         //DµÄÒÆÎ»
+        temp1=D[27];                         //Dçš„ç§»ä½
         temp2=D[26];
         for(i=27;i>1;i--)
         {
@@ -329,25 +329,25 @@ void P_change(int P_temp[],int S_temp[])
 
 void lun(int L[],int R[],int C[],int D[],int n)
 {
-    int E_temp[48];                         //RÀ©Õ¹E
+    int E_temp[48];                         //Ræ‰©å±•E
     E_change(E_temp,R);
 
-    if(shift_temp-->0)shift(C,D,n);           //C,DµÄÑ­»·ÒÆÎ»
-    else shift_1(C,D,n);                    //C,DµÄÓÒÑ­»·ÒÆÎ»
+    if(shift_temp-->0)shift(C,D,n);           //C,Dçš„å¾ªç¯ç§»ä½
+    else shift_1(C,D,n);                    //C,Dçš„å³å¾ªç¯ç§»ä½
 
-    int PC_2_temp[48];                      //ÖÃ»»Ñ¡Ôñ2
+    int PC_2_temp[48];                      //ç½®æ¢é€‰æ‹©2
     PC_2_change(C,D,PC_2_temp);
 
-    int xor_temp[48];                       //Òì»òÔËËã
+    int xor_temp[48];                       //å¼‚æˆ–è¿ç®—
     xor_change(E_temp,PC_2_temp,xor_temp);
 
-    int S_temp[32];                         //SºĞÔËËã
+    int S_temp[32];                         //Sç›’è¿ç®—
     S_change(S_temp,xor_temp);
 
-    int P_temp[32];                         //PÖÃ»»
+    int P_temp[32];                         //Pç½®æ¢
     P_change(P_temp,S_temp);
 
-    int i;                                  //Íê³ÉRºÍL
+    int i;                                  //å®ŒæˆRå’ŒL
     for(i=0;i<32;i++)
     {
         P_temp[i]=L[i]^P_temp[i];
@@ -361,22 +361,22 @@ int main()
 {
     int i;
 
-    unsigned char m[]={"renhaore"};         //Ã÷ÎÄ
-    cout<<"Ã÷ÎÄ:"<<endl<<m<<endl<<endl;
+    unsigned char m[]={"renhaore"};         //æ˜æ–‡
+    cout<<"æ˜æ–‡:"<<endl<<m<<endl<<endl;
     //unsigned char m[]={1,35,69,103,137,171,205,239};
     int m_bit[64];
-    bit(m,m_bit);                           //Ã÷ÎÄ×ªbit
+    bit(m,m_bit);                           //æ˜æ–‡è½¬bit
 
-    unsigned char k[]={"21601304"};         //ÃÜÔ¿
-    cout<<"ÃÜÔ¿:"<<endl<<k<<endl<<endl;
+    unsigned char k[]={"21601304"};         //å¯†é’¥
+    cout<<"å¯†é’¥:"<<endl<<k<<endl<<endl;
     //unsigned char k[]={19,52,87,121,155,188,223,241};
     int k_bit[64];
-    bit(k,k_bit);                           //ÃÜÔ¿×ªbit
+    bit(k,k_bit);                           //å¯†é’¥è½¬bit
 
-    int IP_temp[64];                        //Ã÷ÎÄ³õÊ¼±ä»»
+    int IP_temp[64];                        //æ˜æ–‡åˆå§‹å˜æ¢
     IP_change(IP_temp,m_bit);
 
-    int L[32],R[32];                        //Ã÷ÎÄ·Ö¿é
+    int L[32],R[32];                        //æ˜æ–‡åˆ†å—
     for(i=0;i<32;i++)
     {
         L[i]=IP_temp[i];
@@ -384,10 +384,10 @@ int main()
         //if(i%8==0)cout<<endl;cout<<R[i];
     }
 
-    int PC_1_temp[56];                      //ÃÜÔ¿ÖÃ»»Ñ¡Ôñ1
+    int PC_1_temp[56];                      //å¯†é’¥ç½®æ¢é€‰æ‹©1
     PC_1_change(k_bit,PC_1_temp);
 
-    int C[28],D[28];                        //ÃÜÔ¿·Ö¿é
+    int C[28],D[28];                        //å¯†é’¥åˆ†å—
     for(i=0;i<28;i++)
     {
         C[i]=PC_1_temp[i];
@@ -395,59 +395,59 @@ int main()
         //if(i%7==0)cout<<endl;cout<<C[i];
     }
 
-    for(i=0;i<16;i++)                       //ÂÖ½á¹¹
+    for(i=0;i<16;i++)                       //è½®ç»“æ„
     {
         lun(L,R,C,D,i);
     }
 
-    for(i=0;i<32;i++)                       //×óÓÒ½»»»,ºÏ²¢
+    for(i=0;i<32;i++)                       //å·¦å³äº¤æ¢,åˆå¹¶
     {
         IP_temp[i]=R[i];
         IP_temp[i+32]=L[i];
         //if(i%8==0)cout<<endl;cout<<IP_temp[i+32];
     }
 
-    for(i=0;i<64;i++)                       //ÄæÖÃ»»
+    for(i=0;i<64;i++)                       //é€†ç½®æ¢
     {
         m_bit[i]=IP_temp[IP_1[i]-1];
         //if(i%8==0)cout<<endl;cout<<m_bit[i];
     }
 
-    cout<<"ÃÜÎÄ:"<<endl;
-    for(i=0;i<16;i++)                       //Êä³öÃÜÎÄ
+    cout<<"å¯†æ–‡:"<<endl;
+    for(i=0;i<16;i++)                       //è¾“å‡ºå¯†æ–‡
     {
         cout<<hex<<m_bit[i*4]*8+m_bit[i*4+1]*4+m_bit[i*4+2]*2+m_bit[i*4+3];
     }
     cout<<endl<<endl;
 
-    IP_change(IP_temp,m_bit);               //½âÃÜ,ÃÜÎÄ³õÊ¼ÖÃ»»
+    IP_change(IP_temp,m_bit);               //è§£å¯†,å¯†æ–‡åˆå§‹ç½®æ¢
 
-    for(i=0;i<32;i++)                       //ÃÜÎÄ·Ö¿é
+    for(i=0;i<32;i++)                       //å¯†æ–‡åˆ†å—
     {
         L[i]=IP_temp[i];
         R[i]=IP_temp[i+32];
         //if(i%8==0)cout<<endl;cout<<R[i];
     }
 
-    for(i=0;i<16;i++)                       //ÂÖ½á¹¹
+    for(i=0;i<16;i++)                       //è½®ç»“æ„
     {
         lun(L,R,C,D,i);
     }
 
-    for(i=0;i<32;i++)                       //×óÓÒ½»»»,ºÏ²¢
+    for(i=0;i<32;i++)                       //å·¦å³äº¤æ¢,åˆå¹¶
     {
         IP_temp[i]=R[i];
         IP_temp[i+32]=L[i];
         //if(i%8==0)cout<<endl;cout<<IP_temp[i+32];
     }
 
-    for(i=0;i<64;i++)                       //ÄæÖÃ»»
+    for(i=0;i<64;i++)                       //é€†ç½®æ¢
     {
         m_bit[i]=IP_temp[IP_1[i]-1];
         //if(i%8==0)cout<<endl;cout<<m_bit[i];
     }
 
-    cout<<"½âÃÜ:"<<endl;
+    cout<<"è§£å¯†:"<<endl;
     for(i=0;i<8;i++)
     {
         m_bit[i*8]=m_bit[i*8]*128+m_bit[i*8+1]*64+m_bit[i*8+2]*32+m_bit[i*8+3]*16
